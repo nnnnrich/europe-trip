@@ -12,21 +12,6 @@
   --radius: 14px;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #16191b;
-    --card: #212528;
-    --ink: #ecebe8;
-    --muted: #9aa0a4;
-    --line: #33383c;
-    --accent: #e08a95;
-    --accent-soft: #3a2629;
-    --green: #8cc5b2;
-    --green-soft: #22332e;
-    --shadow: none;
-    color-scheme: dark;
-  }
-}
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; }
@@ -89,7 +74,6 @@ h1, h2, h3 { margin: 0; font-weight: 700; }
 .empty b { display: block; font-size: 32px; margin-bottom: 6px; }
 
 .hero { background: var(--accent); color: #fff; border: 0; padding: 18px 18px 16px; }
-@media (prefers-color-scheme: dark) { .hero { background: #5c2530; } }
 .hero .label { opacity: .8; font-size: 13px; }
 .hero .count { font-size: 34px; font-weight: 800; line-height: 1.15; margin: 4px 0; }
 .hero .range { opacity: .85; font-size: 13px; }

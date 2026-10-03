@@ -1,5 +1,5 @@
 // 離線快取：先用快取秒開，背景再抓新版（下次開啟就是新版）
-const CACHE = 'trip-v1';
+const CACHE = 'trip-v2';
 const ASSETS = ['./', 'index.html', 'app.css', 'app.js', 'config.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 
