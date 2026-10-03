@@ -87,9 +87,9 @@ function events() {
   }
   for (const p of all('plan')) {
     const d = p.data;
-    ev.push({ date: d.date, time: d.time, icon: '📍', title: d.title || '行程', sub: [d.place, d.note].filter(Boolean).join(' · '), item: p });
+    ev.push({ date: d.date, time: d.time, icon: d.icon || '📍', title: d.title || '行程', sub: [d.place, d.note].filter(Boolean).join(' · '), order: +d.order || 0, item: p });
   }
-  return ev.filter(e => e.date).sort((a, b) => (a.date + (a.time || '99')).localeCompare(b.date + (b.time || '99')));
+  return ev.filter(e => e.date).sort((a, b) => (a.date + (a.time || '99')).localeCompare(b.date + (b.time || '99')) || (a.order || 0) - (b.order || 0));
 }
 
 function tripRange() {
@@ -414,7 +414,9 @@ function openForm(kind, id, preset = {}) {
   editing = { kind, id };
   $('#sheet-title').textContent = (cur ? '編輯' : '新增') + f.title;
   $('#sheet-body').innerHTML = `<form class="form" id="edit-form">${f.fields().map(fd => fieldHtml(fd, data[fd[0]])).join('')}</form>
-    ${kind === 'plan' && data.link ? `<p class="hint"><a href="${esc(data.link)}" target="_blank" rel="noopener">開啟連結 ↗</a></p>` : ''}
+    ${kind === 'plan' && (data.place || data.link) ? `<div class="actions">
+      ${data.place ? `<a class="btn" href="https://maps.apple.com/?q=${encodeURIComponent(data.place)}" target="_blank" rel="noopener">🗺 Apple 地圖</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.place)}" target="_blank" rel="noopener">Google 地圖</a>` : ''}
+      ${data.link ? `<a class="btn" href="${esc(data.link)}" target="_blank" rel="noopener">開啟連結 ↗</a>` : ''}</div>` : ''}
     ${cur ? `<button class="danger" data-action="delete">刪除</button>` : ''}`;
   showSheet();
 }
