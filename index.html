@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="歐洲行">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16191b" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+<title>歐洲行</title>
+</head>
+<body>
+<header id="top">
+  <div class="top-inner">
+    <h1 id="trip-name">歐洲行</h1>
+    <button id="sync-pill" class="pill" data-action="sync">…</button>
+    <button class="icon-btn" data-action="settings" aria-label="設定">⚙︎</button>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<nav id="tabs">
+  <button data-tab="home"><span>🏠</span>總覽</button>
+  <button data-tab="days"><span>🗓</span>行程</button>
+  <button data-tab="book"><span>🎫</span>訂位</button>
+  <button data-tab="money"><span>💶</span>記帳</button>
+  <button data-tab="list"><span>✅</span>清單</button>
+</nav>
+
+<div id="sheet" hidden>
+  <div class="sheet-backdrop" data-action="close"></div>
+  <div class="sheet-panel" role="dialog" aria-modal="true">
+    <div class="sheet-head">
+      <button class="link" data-action="close">取消</button>
+      <h2 id="sheet-title"></h2>
+      <button class="link strong" data-action="save">儲存</button>
+    </div>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<div id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
