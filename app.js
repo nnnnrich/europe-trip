@@ -500,7 +500,10 @@ function saveSettings() {
   const data = { ...(items.get('settings')?.data || {}) };
   for (const [k, v] of new FormData($('#edit-form'))) data[k] = v.trim();
   data.home = (data.home || 'TWD').toUpperCase();
-  put('settings', data, 'settings');
+  // only write when something actually changed — otherwise a fresh install that
+  // hasn't synced yet would overwrite the shared settings with blank defaults
+  const cur = S();
+  if (Object.keys(data).some(k => data[k] !== cur[k])) put('settings', data, 'settings');
   closeSheet();
 }
 
